@@ -6,7 +6,7 @@
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 14:03:23 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/11 11:56:58 by pyasuko          ###   ########.fr       */
+/*   Updated: 2020/11/11 15:12:41 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,13 @@
 # include <stdio.h>
 # include <unistd.h>
 
-// typedef struct		s_list
-// {
-// 	void			*content;
-// 	struct s_list	*next;
-// }					t_list;
-
 void				*ft_memset(void *dst, int c, size_t len);
 
 void				ft_bzero(void *s, size_t len);
 
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
+
+void				*ft_memcpy(void *dst, const void *src, size_t len);
 
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 
@@ -78,5 +74,17 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 
 void				ft_putendl_fd(char *s, int fd);
+
+void				ft_putnbr_fd(int n, int fd);
+
+char				*ft_substr(char const *s, unsigned int start, size_t len);
+
+char				*ft_strjoin(char const *s1, char const *s2);
+
+char				*ft_strtrim(char const *s1, char const *set);
+
+char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+
+char				*ft_itoa(int n);
 
 #endif

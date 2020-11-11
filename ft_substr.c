@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 21:05:42 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/11 14:49:55 by pyasuko          ###   ########.fr       */
+/*   Created: 2020/11/11 14:50:52 by pyasuko           #+#    #+#             */
+/*   Updated: 2020/11/11 14:50:56 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t nb;
+	size_t	i;
+	size_t	j;
+	char	*str;
 
-	nb = 0;
-	if (n < 0)
+	if (!s)
+		return (NULL);
+	str = (char*)malloc(sizeof(*s) * (len + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s[i])
 	{
-		ft_putchar_fd('-', fd);
-		if (n == -2147483648)
+		if (i >= start && j < len)
 		{
-			n = n + 1;
-			nb = 1;
+			str[j] = s[i];
+			j++;
 		}
-		n = n * -1;
+		i++;
 	}
-	if (n > 9)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(((n + nb) % 10) + 48, fd);
-	}
-	else
-	{
-		ft_putchar_fd((n + nb) + 48, fd);
-	}
+	str[j] = 0;
+	return (str);
 }

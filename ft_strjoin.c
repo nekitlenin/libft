@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 21:05:42 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/11 14:49:55 by pyasuko          ###   ########.fr       */
+/*   Created: 2020/11/11 15:09:29 by pyasuko           #+#    #+#             */
+/*   Updated: 2020/11/11 15:16:40 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t nb;
-
-	nb = 0;
-	if (n < 0)
+	size_t	i;
+	size_t	n;
+	char	*s3;
+	
+	if (!s1 || !s2)
+		return (NULL);
+	if (!(s3 = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
+		return (NULL);
+	i = 0;
+	n = 0;
+	while (s1[i] != '\0')
 	{
-		ft_putchar_fd('-', fd);
-		if (n == -2147483648)
-		{
-			n = n + 1;
-			nb = 1;
-		}
-		n = n * -1;
+		s3[i] = s1[i];
+		i++;
+		n++;
 	}
-	if (n > 9)
+	i = 0;
+	while (s2[i] != '\0')
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(((n + nb) % 10) + 48, fd);
+		s3[n] = s2[i];
+		n++;
+		i++;
 	}
-	else
-	{
-		ft_putchar_fd((n + nb) + 48, fd);
-	}
+	s3[n] = '\0';
+	return (s3);
 }

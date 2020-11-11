@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 21:05:42 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/11 14:49:55 by pyasuko          ###   ########.fr       */
+/*   Created: 2020/11/11 15:14:31 by pyasuko           #+#    #+#             */
+/*   Updated: 2020/11/11 15:16:56 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t nb;
+	unsigned int n;
+	char   *dest;
 
-	nb = 0;
-	if (n < 0)
+	n = 0;
+	if (!s)
+		return (NULL);
+	if (!(dest = (char *)malloc(sizeof(char) * ft_strlen((char *)s) + 1)))
+		return (NULL);
+	while (s[n])
 	{
-		ft_putchar_fd('-', fd);
-		if (n == -2147483648)
-		{
-			n = n + 1;
-			nb = 1;
-		}
-		n = n * -1;
+		dest[n] = (*f)(n, (char)s[n]);
+		n++;
 	}
-	if (n > 9)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(((n + nb) % 10) + 48, fd);
-	}
-	else
-	{
-		ft_putchar_fd((n + nb) + 48, fd);
-	}
+	dest[n] = '\0';
+	return (dest);
 }

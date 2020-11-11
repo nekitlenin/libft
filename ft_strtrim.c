@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 21:05:42 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/11 14:49:55 by pyasuko          ###   ########.fr       */
+/*   Created: 2020/11/11 15:13:04 by pyasuko           #+#    #+#             */
+/*   Updated: 2020/11/11 15:14:17 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+char *ft_strtrim(char const *s1, char const *set)
 {
-	size_t nb;
-
-	nb = 0;
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		if (n == -2147483648)
-		{
-			n = n + 1;
-			nb = 1;
-		}
-		n = n * -1;
-	}
-	if (n > 9)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(((n + nb) % 10) + 48, fd);
-	}
-	else
-	{
-		ft_putchar_fd((n + nb) + 48, fd);
-	}
+	size_t i;
+	size_t q;	
+	if (s1 == NULL || set == NULL)
+		return (NULL);
+	i = 0;
+	while (s1[i] && ft_strchr(set, s1[i]) != NULL)
+		i++;
+	q = ft_strlen(&s1[i]);
+	if (q != 0)
+		while (s1[i + q - 1] && ft_strchr(set, s1[i + q - 1]) != NULL)
+			q--;
+	return (ft_substr(s1, i, q));
 }

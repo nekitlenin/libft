@@ -6,7 +6,7 @@
 #    By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 22:28:43 by pyasuko           #+#    #+#              #
-#    Updated: 2020/11/11 11:56:57 by pyasuko          ###   ########.fr        #
+#    Updated: 2020/11/11 15:11:36 by pyasuko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,15 @@ SRC = ft_memset.c\
 	ft_tolower.c\
 	ft_calloc.c\
 	ft_strdup.c\
+	ft_substr.c\
+	ft_strjoin.c\
+	ft_strtrim.c\
+	ft_strmapi.c\
+	ft_itoa.c\
 	ft_putchar_fd.c\
 	ft_putstr_fd.c\
-	ft_putendl_fd.c
+	ft_putendl_fd.c\
+	ft_putnbr_fd.c
 
 OBJ = ${SRC:.c=.o}
 CC = gcc
