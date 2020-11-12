@@ -6,7 +6,7 @@
 #    By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 22:28:43 by pyasuko           #+#    #+#              #
-#    Updated: 2020/11/11 15:11:36 by pyasuko          ###   ########.fr        #
+#    Updated: 2020/11/12 15:38:37 by pyasuko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,17 @@ SRC = ft_memset.c\
 	ft_putendl_fd.c\
 	ft_putnbr_fd.c
 
+BONUS = ft_lstnew.c \
+	ft_lstadd_front.c \
+	ft_lstsize.c \
+	ft_lstlast.c \
+	ft_lstadd_back.c \
+	ft_lstdelone.c \
+	ft_lstclear.c \
+	ft_lstiter.c
+
 OBJ = ${SRC:.c=.o}
+BOBJ = ${BONUS:.c=.o}
 CC = gcc
 RM = rm -rf
 CFLAGS = -Wall -Werror -Wextra
@@ -58,8 +68,13 @@ ${NAME}:	${OBJ}
 			ar rc ${NAME} ${OBJ} libft.h
 			ranlib ${NAME}
 
+bonus:		${OBJ} ${BOBJ}
+			${CC} ${CFLAGS} -c ${SRC} ${BONUS}
+			ar rc ${NAME} ${OBJ} ${BOBJ} libft.h
+			ranlib ${NAME}
+
 clean:
-			rm -rf ${OBJ}
+			rm -rf ${OBJ} ${BOBJ}
 
 fclean:		clean
 			rm -rf ${NAME}

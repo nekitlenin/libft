@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 19:08:06 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/12 11:55:10 by pyasuko          ###   ########.fr       */
+/*   Created: 2020/11/12 15:34:32 by pyasuko           #+#    #+#             */
+/*   Updated: 2020/11/12 15:42:02 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *h, const char *n, size_t len)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	size_t i;
-	size_t q;
-
-	i = 0;
-	if (n[i] == '\0')
-		return ((char *)h);
-	while (h[i] && i < len != '\0')
+	while (lst)
 	{
-		q = 0;
-		while (n[q] != '\0')
-		{
-			if (i + q >= len || h[i + q] != n[q])
-				break ;
-			q++;
-		}
-		if (n[q] == '\0')
-			return ((char *)(h + i));
-		i++;
+		f(lst->content);
+		lst = lst->next;
 	}
-	return (NULL);
 }

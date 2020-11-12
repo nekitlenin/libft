@@ -6,16 +6,17 @@
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 15:13:04 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/11 15:14:17 by pyasuko          ###   ########.fr       */
+/*   Updated: 2020/11/12 11:58:03 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t i;
-	size_t q;	
+	size_t q;
+
 	if (s1 == NULL || set == NULL)
 		return (NULL);
 	i = 0;

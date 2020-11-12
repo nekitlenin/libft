@@ -6,7 +6,7 @@
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 15:14:31 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/11 15:16:56 by pyasuko          ###   ########.fr       */
+/*   Updated: 2020/11/12 11:57:02 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned int n;
-	char   *dest;
+	unsigned int	n;
+	char			*dest;
 
 	n = 0;
 	if (!s)

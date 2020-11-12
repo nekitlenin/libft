@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 19:08:06 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/12 11:55:10 by pyasuko          ###   ########.fr       */
+/*   Created: 2020/11/12 15:20:34 by pyasuko           #+#    #+#             */
+/*   Updated: 2020/11/12 15:42:43 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *h, const char *n, size_t len)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	size_t i;
-	size_t q;
+	t_list *t;
 
-	i = 0;
-	if (n[i] == '\0')
-		return ((char *)h);
-	while (h[i] && i < len != '\0')
+	if (lst)
 	{
-		q = 0;
-		while (n[q] != '\0')
+		while (*lst)
 		{
-			if (i + q >= len || h[i + q] != n[q])
-				break ;
-			q++;
+			t = (*lst)->next;
+			ft_lstdelone(*lst, del);
+			(*lst) = t;
 		}
-		if (n[q] == '\0')
-			return ((char *)(h + i));
-		i++;
 	}
-	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 14:17:10 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/09 16:22:14 by pyasuko          ###   ########.fr       */
+/*   Updated: 2020/11/12 14:50:47 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t	ft_strlcpy(char *buf, const char *src, size_t size)
 	i = 0;
 	if (size == 0)
 		return (ft_strlen(src));
-	if (buf == '\0' || src == '\0' || size == 0)
+	if (!buf)
 		return (0);
 	while (src[len] != '\0')
 		len++;

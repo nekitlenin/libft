@@ -6,7 +6,7 @@
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 15:09:29 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/11 15:16:40 by pyasuko          ###   ########.fr       */
+/*   Updated: 2020/11/12 15:43:32 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	size_t	n;
 	char	*s3;
-	
+
 	if (!s1 || !s2)
 		return (NULL);
 	if (!(s3 = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))

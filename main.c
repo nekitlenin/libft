@@ -27,6 +27,7 @@
 	// #include "ft_memchr.c"
 	// #include "ft_memcmp.c"
 	#include "ft_strdup.c"
+	#include "ft_itoa.c"
 
 int	main()
 {/* MEMSET */
@@ -297,5 +298,10 @@ int	main()
    					// Очищаем память, выделенную под дубликат
    free (istr);
    free (my);
+/* ITOA */
+	printf("-------------------\n");
+	printf("ITOA\n");
+	printf("-------------------\n");
+	printf("%s\n", ft_itoa(0));
 	return (0);
 }

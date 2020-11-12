@@ -6,7 +6,7 @@
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 12:28:49 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/11 14:23:15 by pyasuko          ###   ########.fr       */
+/*   Updated: 2020/11/12 12:28:29 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	ft_twentyfive(long n)
 	int l;
 
 	l = 0;
+	if (n == 0)
+		return (l + 1);
 	if (n < 0)
 	{
 		n = n * (-1);
