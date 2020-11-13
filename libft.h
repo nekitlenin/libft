@@ -6,7 +6,7 @@
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 14:03:23 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/12 15:49:23 by pyasuko          ###   ########.fr       */
+/*   Updated: 2020/11/13 16:19:22 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 char				*ft_itoa(int n);
 
+char				**ft_split(char const *s, char c);
+
 t_list				*ft_lstnew(void *content);
 
 int					ft_lstsize(t_list *lst);
@@ -109,6 +111,7 @@ void				ft_lstclear(t_list **lst, void (*del)(void*));
 
 void				ft_lstiter(t_list *lst, void (*f)(void*));
 
-// t_list				*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void *));
+t_list				*ft_lstmap(t_list *lst, void *(*f)(void*),
+					void (*del)(void *));
 
 #endif

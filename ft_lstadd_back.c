@@ -6,7 +6,7 @@
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 14:06:16 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/12 15:42:26 by pyasuko          ###   ########.fr       */
+/*   Updated: 2020/11/13 13:54:41 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
+	t_list *last;
+
 	if (!*lst)
 		*lst = new;
 	else
 	{
-		while ((*lst)->next)
-			(*lst) = (*lst)->next;
-		(*lst)->next = new;
+		last = ft_lstlast(*lst);
+		last->next = new;
 		new->next = 0;
 	}
 }

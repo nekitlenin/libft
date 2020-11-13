@@ -6,7 +6,7 @@
 #    By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/02 22:28:43 by pyasuko           #+#    #+#              #
-#    Updated: 2020/11/12 15:38:37 by pyasuko          ###   ########.fr        #
+#    Updated: 2020/11/13 13:34:30 by pyasuko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRC = ft_memset.c\
 	ft_strtrim.c\
 	ft_strmapi.c\
 	ft_itoa.c\
+	ft_split.c\
 	ft_putchar_fd.c\
 	ft_putstr_fd.c\
 	ft_putendl_fd.c\
@@ -52,7 +53,8 @@ BONUS = ft_lstnew.c \
 	ft_lstadd_back.c \
 	ft_lstdelone.c \
 	ft_lstclear.c \
-	ft_lstiter.c
+	ft_lstiter.c \
+	ft_lstmap.c
 
 OBJ = ${SRC:.c=.o}
 BOBJ = ${BONUS:.c=.o}
@@ -61,15 +63,16 @@ RM = rm -rf
 CFLAGS = -Wall -Werror -Wextra
 NORM = norminette
 
+.c.o:
+		${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
+
 all: ${NAME}
 
 ${NAME}:	${OBJ}
-			${CC} ${CFLAGS} -c ${SRC}
 			ar rc ${NAME} ${OBJ} libft.h
 			ranlib ${NAME}
 
 bonus:		${OBJ} ${BOBJ}
-			${CC} ${CFLAGS} -c ${SRC} ${BONUS}
 			ar rc ${NAME} ${OBJ} ${BOBJ} libft.h
 			ranlib ${NAME}
 

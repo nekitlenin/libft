@@ -6,9 +6,94 @@
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 12:52:16 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/12 14:01:22 by pyasuko          ###   ########.fr       */
+/*   Updated: 2020/11/13 16:28:17 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int		ft_numstr(char const *s1, char c)
+{
+	int	comp;
+	int	cles;
+
+	comp = 0;
+	cles = 0;
+	if (*s1 == '\0')
+		return (0);
+	while (*s1 != '\0')
+	{
+		if (*s1 == c)
+			cles = 0;
+		else if (cles == 0)
+		{
+			cles = 1;
+			comp++;
+		}
+		s1++;
+	}
+	return (comp);
+}
+
+static int		ft_numchar(char const *s2, char c, int i)
+{
+	int	lenght;
+
+	lenght = 0;
+	while (s2[i] != c && s2[i] != '\0')
+	{
+		lenght++;
+		i++;
+	}
+	return (lenght);
+}
+
+static char		**ft_free(char const **dst, int j)
+{
+	while (j > 0)
+	{
+		j--;
+		free((void *)dst[j]);
+	}
+	free(dst);
+	return (NULL);
+}
+
+static char		**affect(char const *s, char **dst, char c, int l)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	j = 0;
+	while (s[i] != '\0' && j < l)
+	{
+		k = 0;
+		while (s[i] == c)
+			i++;
+		dst[j] = (char *)malloc(sizeof(char) * ft_numchar(s, c, i) + 1);
+		if (dst[j] == NULL)
+			return (ft_free((char const **)dst, j));
+		while (s[i] != '\0' && s[i] != c)
+			dst[j][k++] = s[i++];
+		dst[j][k] = '\0';
+		j++;
+	}
+	dst[j] = 0;
+	return (dst);
+}
+
+char			**ft_split(char const *s, char c)
+{
+	char	**dst;
+	int		l;
+
+	if (s == NULL)
+		return (NULL);
+	l = ft_numstr(s, c);
+	dst = (char **)malloc(sizeof(char *) * (l + 1));
+	if (dst == NULL)
+		return (NULL);
+	return (affect(s, dst, c, l));
+}

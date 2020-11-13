@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyasuko <pyasuko@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/12 14:01:47 by pyasuko           #+#    #+#             */
-/*   Updated: 2020/11/13 14:05:25 by pyasuko          ###   ########.fr       */
+/*   Created: 2020/11/12 15:56:30 by pyasuko           #+#    #+#             */
+/*   Updated: 2020/11/13 13:57:13 by pyasuko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int		i;
+	t_list	*new_lst;
+	t_list	*new_elem;
 
-	i = 0;
+	new_lst = NULL;
 	while (lst)
 	{
-		i++;
+		if (!(new_elem = ft_lstnew(f(lst->content))))
+		{
+			ft_lstclear(&new_lst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new_lst, new_elem);
 		lst = lst->next;
 	}
-	return (i);
+	return (new_lst);
 }
